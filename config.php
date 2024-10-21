@@ -30,7 +30,7 @@ class Config
     // GENERAL SETTINGS
     // ------------------------------------------------------------------------
 
-    const BASE_URL = 'http://localhost/sysVanity';
+    const BASE_URL = 'http://ec2-3-20-225-151.us-east-2.compute.amazonaws.com/vanity';
     const LANGUAGE = 'english';
     const DEBUG_MODE = false;
 
@@ -38,10 +38,10 @@ class Config
     // DATABASE SETTINGS
     // ------------------------------------------------------------------------
 
-    const DB_HOST = 'localhost';
-    const DB_NAME = 'easyappointments';
-    const DB_USERNAME = 'easyappointments';
-    const DB_PASSWORD = 'easyappointments';
+    const DB_HOST = 'db';
+    const DB_NAME = 'vanitydb';
+    const DB_USERNAME = 'vanityuser';
+    const DB_PASSWORD = 'vanitypassword';
 
     // ------------------------------------------------------------------------
     // GOOGLE CALENDAR SYNC

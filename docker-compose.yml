@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    container_name: vanity-app
+    ports:
+      - "8080:80"  # Exponemos el puerto 80 del contenedor en el puerto 8080 de la máquina host
+    volumes:
+      - ./vanity:/var/www/html  # Sincroniza los archivos del proyecto con los del contenedor
+    environment:
+      DB_HOST: db
+      DB_USER: vanityuser
+      DB_PASS: vanitypassword
+      DB_NAME: vanitydb
+    depends_on:
+      - db  # Asegura que la base de datos se levante antes que la app
+
+  db:
+    image: mysql:5.7
+    container_name: vanity-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword  # Contraseña del usuario root de MySQL
+      MYSQL_DATABASE: vanitydb           # Nombre de la base de datos que se creará
+      MYSQL_USER: vanityuser             # Nombre del usuario que se creará
+      MYSQL_PASSWORD: vanitypassword     # Contraseña del usuario
+    volumes:
+      - db_data:/var/lib/mysql  # Volumen para persistir los datos de la BD
+
+volumes:
+  db_data:
+
